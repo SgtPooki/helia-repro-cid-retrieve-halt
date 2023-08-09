@@ -1,0 +1,57 @@
+import {createHelia} from "helia";
+import {unixfs} from "@helia/unixfs";
+import {CID} from "multiformats/cid";
+import {multiaddr} from "@multiformats/multiaddr";
+import {peerIdFromString} from "@libp2p/peer-id";
+import {bootstrap} from "@libp2p/bootstrap";
+import {pubsubPeerDiscovery} from "@libp2p/pubsub-peer-discovery";
+import {circuitRelayTransport, circuitRelayServer} from "libp2p/circuit-relay";
+import {webRTC, webRTCDirect} from "@libp2p/webrtc";
+import {webTransport} from "@libp2p/webtransport";
+import {webSockets} from "@libp2p/websockets";
+import {all} from "@libp2p/websockets/filters";
+import {identifyService} from "libp2p/identify";
+import {autoNATService} from "libp2p/autonat";
+import {gossipsub} from "@chainsafe/libp2p-gossipsub";
+import {kadDHT} from "@libp2p/kad-dht";
+import {ipnsSelector} from "ipns/selector";
+import {ipnsValidator} from "ipns/validator";
+
+export const createHeliaFromUrl = async url => {
+  const info = await (await fetch(url)).json();
+  const bootstrapConfig = {list: info.multiaddrs};
+  const node = await createHelia({
+    libp2p: {
+      // https://github.com/ipfs/helia/blob/main/packages/helia/src/utils/libp2p-defaults.browser.ts#L27
+      addresses: {
+        listen: [
+          "/webrtc", "/wss", "/ws",
+        ],
+      },
+      transports: [
+        webSockets({filter: all}),
+        webRTC(), webRTCDirect(),
+        webTransport(),
+        // https://github.com/libp2p/js-libp2p-websockets#libp2p-usage-example
+        circuitRelayTransport({discoverRelays: 1}),
+      ],
+      peerDiscovery: [bootstrap(bootstrapConfig), pubsubPeerDiscovery()],
+      services: {
+        identify: identifyService(),
+        autoNAT: autoNATService(),
+        pubsub: gossipsub({allowPublishToZeroPeers: true, emitSelf: false, canRelayMessage: true}),
+        dht: kadDHT({
+          clientMode: true,
+          validators: {ipns: ipnsValidator},
+          selectors: {ipns: ipnsSelector},
+        }),
+      },
+      // https://github.com/libp2p/js-libp2p/blob/master/doc/CONFIGURATION.md#configuring-connection-gater
+      connectionGater: {denyDialMultiaddr: async (...args) => false},
+    },
+  });
+  // wait to connect
+  while (node.libp2p.getMultiaddrs().length === 0) await new Promise(f => setTimeout(f, 500));
+  const nodefs = unixfs(node);
+  return {node, nodefs, CID, peerIdFromString, multiaddr};
+};
