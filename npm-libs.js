@@ -4,6 +4,7 @@ export {unixfs} from "@helia/unixfs";
 export {CID} from "multiformats/cid";
 export {multiaddr} from "@multiformats/multiaddr";
 export {peerIdFromString} from "@libp2p/peer-id";
+export {createTopology} from "@libp2p/topology";
 
 export {bootstrap} from "@libp2p/bootstrap";
 export {pubsubPeerDiscovery} from "@libp2p/pubsub-peer-discovery";

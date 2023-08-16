@@ -1,6 +1,7 @@
 import * as http from "node:http";
 
 import {createHelia} from "helia";
+import {createTopology} from "@libp2p/topology";
 import {tcp} from "@libp2p/tcp";
 import {webSockets} from "@libp2p/websockets";
 import {webRTC, webRTCDirect} from "@libp2p/webrtc";
@@ -70,6 +71,17 @@ export const createMiddle = async () => {
 
 export const createNode = async (middle) => {
   const node = await createHelia();
+  node.libp2p.addEventListener("peer:connect", ev => {
+    //console.log("[peer:connect]", ev.detail);
+  });
+  await node.libp2p.register("/ipfs/bitswap/1.2.0", createTopology({
+    onConnect: (peerId, conn) => {
+      //console.log("[/ipfs/bitswap/1.2.0] onConnect", peerId);
+    },
+    onDisonnect: peerId => {
+      //console.log("[/ipfs/bitswap/1.2.0] onDisonnect", peerId);
+    },
+  }));
   await node.libp2p.dialProtocol(middle.libp2p.getMultiaddrs()[0], node.libp2p.getProtocols());
   return node;
 };

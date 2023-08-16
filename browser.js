@@ -3,6 +3,7 @@ import {unixfs} from "@helia/unixfs";
 import {CID} from "multiformats/cid";
 import {multiaddr} from "@multiformats/multiaddr";
 import {peerIdFromString} from "@libp2p/peer-id";
+import {createTopology} from "@libp2p/topology";
 import {bootstrap} from "@libp2p/bootstrap";
 import {pubsubPeerDiscovery} from "@libp2p/pubsub-peer-discovery";
 import {circuitRelayTransport, circuitRelayServer} from "libp2p/circuit-relay";
@@ -50,6 +51,14 @@ export const createHeliaFromUrl = async url => {
       connectionGater: {denyDialMultiaddr: async (...args) => false},
     },
   });
+  node.libp2p.addEventListener("peer:connect", ev => {
+    console.log("[peer:connect]", ev.detail.toString());
+  });
+  // js-ipfs-bitswap/src/network.tx
+  await node.libp2p.register("/ipfs/bitswap/1.2.0", createTopology({
+    onConnect: (peerId, conn) => {console.log("[/ipfs/bitswap/1.2.0] onConnect", `${peerId}`);},
+    onDisconnect: peerId => {console.log("[/ipfs/bitswap/1.2.0] onDisconnect", `${peerId}`);},
+  }));
   // wait to connect
   while (node.libp2p.getMultiaddrs().length === 0) await new Promise(f => setTimeout(f, 500));
   const nodefs = unixfs(node);
