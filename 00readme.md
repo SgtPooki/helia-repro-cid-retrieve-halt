@@ -19,12 +19,27 @@ $ npm run build
 ```sh
 $ node case-success.mjs
 
-[middle info URL] http://localhost:54399/
-[peerId on nodejs] 12D3KooWD7QJaTzmJyehjzctLNywWrWnpurue6bAnxvALcKw3PTr
-[page server url] http://localhost:54405/index.html
-(node:78124) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
+[middle info URL] http://localhost:59352/
+[peerId on nodejs] 12D3KooWN3yQuxxh2dzroLGEveT87RC6HXF9f5Gfh3gvvPaHoq5M
+[page server url] http://localhost:59358/index.html
+(node:61832) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
 (Use `node --trace-deprecation ...` to show where the warning was created)
-{ url: '', lineNumber: 4, columnNumber: 10 } [peerId on browser] 12D3KooWDHrcijYVQgpDZAgP3cakDXfVrsghS9SXnDxtJhd2n1f5
+{
+  url: 'http://localhost:59358/browser.js',
+  lineNumber: 54,
+  columnNumber: 12
+} [peer:connect] 12D3KooWFhTo9QtMDziFLV655qoKxGsYDwoVDDMAhYwhimMJNt78
+{
+  url: 'http://localhost:59358/browser.js',
+  lineNumber: 54,
+  columnNumber: 12
+} [peer:connect] 12D3KooWN3yQuxxh2dzroLGEveT87RC6HXF9f5Gfh3gvvPaHoq5M
+{ url: '', lineNumber: 4, columnNumber: 10 } [peerId on browser] 12D3KooWH6rEdHDSDcbGyz11u4Mk5aLBHjAT8MWgYMW4W8mQqf7K
+{
+  url: 'http://localhost:59358/browser.js',
+  lineNumber: 58,
+  columnNumber: 42
+} [/ipfs/bitswap/1.2.0] onConnect 12D3KooWN3yQuxxh2dzroLGEveT87RC6HXF9f5Gfh3gvvPaHoq5M
 [stat of cid from browser] {
   cid: CID(bafkreif5viehisdkgsxmfrmu5crzazgqhtg7xaifnjzyrcypsddkfnecaa),
   mode: undefined,
@@ -38,18 +53,23 @@ $ node case-success.mjs
   unixfs: undefined
 }
 [text of cid from browser] Hello from browser
-{ url: '', lineNumber: 4, columnNumber: 12 } [peer.id] 12D3KooWD7QJaTzmJyehjzctLNywWrWnpurue6bAnxvALcKw3PTr
+{ url: '', lineNumber: 4, columnNumber: 12 } [peer.id] 12D3KooWN3yQuxxh2dzroLGEveT87RC6HXF9f5Gfh3gvvPaHoq5M
 { url: '', lineNumber: 5, columnNumber: 12 } [peer.multiaddrs.length] 6
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/54397/p2p/12D3KooWRNKNQ28o7akKCMfXRRSgYKyFan3qxm7S83ULmVzFu8Lm/p2p-circuit
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/54398/ws/p2p/12D3KooWRNKNQ28o7akKCMfXRRSgYKyFan3qxm7S83ULmVzFu8Lm/p2p-circuit
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/54402
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/54397/p2p/12D3KooWRNKNQ28o7akKCMfXRRSgYKyFan3qxm7S83ULmVzFu8Lm/p2p-circuit
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/54398/ws/p2p/12D3KooWRNKNQ28o7akKCMfXRRSgYKyFan3qxm7S83ULmVzFu8Lm/p2p-circuit
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/54402
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59350/p2p/12D3KooWFhTo9QtMDziFLV655qoKxGsYDwoVDDMAhYwhimMJNt78/p2p-circuit
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59351/ws/p2p/12D3KooWFhTo9QtMDziFLV655qoKxGsYDwoVDDMAhYwhimMJNt78/p2p-circuit
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59355
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59350/p2p/12D3KooWFhTo9QtMDziFLV655qoKxGsYDwoVDDMAhYwhimMJNt78/p2p-circuit
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59351/ws/p2p/12D3KooWFhTo9QtMDziFLV655qoKxGsYDwoVDDMAhYwhimMJNt78/p2p-circuit
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59355
 { url: '', lineNumber: 7, columnNumber: 12 } [peer.protocolss.length] 0
 { url: '', lineNumber: 13, columnNumber: 10 } [stat of cid from nodejs] {cid: _CID, mode: undefined, mtime: undefined, fileSize: 17n, dagSize: 17n}
 { url: '', lineNumber: 19, columnNumber: 10 } [text of cid from nodejs] Hello from nodejs
 [closing...]
+{
+  url: 'http://localhost:59358/browser.js',
+  lineNumber: 59,
+  columnNumber: 37
+} [/ipfs/bitswap/1.2.0] onDisconnect 12D3KooWN3yQuxxh2dzroLGEveT87RC6HXF9f5Gfh3gvvPaHoq5M
 ```
 
 Accessed from nodejs helia to content on browser helia at first, the browser helia can access content on the nodejs helia.
@@ -59,21 +79,37 @@ Accessed from nodejs helia to content on browser helia at first, the browser hel
 ```sh
 $ node case-halt.mjs
 
-[middle info URL] http://localhost:55314/
-[peerId on nodejs] 12D3KooWLykYoddbySbRoZ6ajocCiSreKU4Pc9ZRGLrSPNm18gRM
-[page server url] http://localhost:55346/index.html
-(node:90594) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
+[middle info URL] http://localhost:59635/
+[peerId on nodejs] 12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
+[page server url] http://localhost:59642/index.html
+(node:70713) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
 (Use `node --trace-deprecation ...` to show where the warning was created)
-{ url: '', lineNumber: 4, columnNumber: 10 } [peerId on browser] 12D3KooWAUEY5s3DK9L9mxyNfDykybkwzQNktEtkVMmMxe1zGa5w
-{ url: '', lineNumber: 4, columnNumber: 12 } [peer.id] 12D3KooWLykYoddbySbRoZ6ajocCiSreKU4Pc9ZRGLrSPNm18gRM
-{ url: '', lineNumber: 5, columnNumber: 12 } [peer.multiaddrs.length] 6
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/55312/p2p/12D3KooWMQM3PAYwKeK4n2MyE98LQZmFXRAENrXt8CV65Ej56KXY/p2p-circuit
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/55313/ws/p2p/12D3KooWMQM3PAYwKeK4n2MyE98LQZmFXRAENrXt8CV65Ej56KXY/p2p-circuit
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/55343
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/55312/p2p/12D3KooWMQM3PAYwKeK4n2MyE98LQZmFXRAENrXt8CV65Ej56KXY/p2p-circuit
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/55313/ws/p2p/12D3KooWMQM3PAYwKeK4n2MyE98LQZmFXRAENrXt8CV65Ej56KXY/p2p-circuit
-{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/55343
+{
+  url: 'http://localhost:59642/browser.js',
+  lineNumber: 54,
+  columnNumber: 12
+} [peer:connect] 12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ
+{ url: '', lineNumber: 4, columnNumber: 10 } [peerId on browser] 12D3KooWNHdkwEtkuDqSfZeVjc8Lam217LCkfewMX3UFwAhR1WYk
+{ url: '', lineNumber: 4, columnNumber: 12 } [peer.id] 12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
+{ url: '', lineNumber: 5, columnNumber: 12 } [peer.multiaddrs.length] 12
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59633/p2p/12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ/p2p-circuit
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59633/p2p/12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ/p2p-circuit/p2p/12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59634/ws/p2p/12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ/p2p-circuit
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59634/ws/p2p/12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ/p2p-circuit/p2p/12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59639
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/127.0.0.1/tcp/59639/p2p/12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59633/p2p/12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ/p2p-circuit
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59633/p2p/12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ/p2p-circuit/p2p/12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59634/ws/p2p/12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ/p2p-circuit
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59634/ws/p2p/12D3KooWSrsvuX3s8LmcGbaSXKpC6M5kQ7GeA8naBfx42QcALuBZ/p2p-circuit/p2p/12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59639
+{ url: '', lineNumber: 6, columnNumber: 46 } [peer.multiaddrs] /ip4/192.168.10.6/tcp/59639/p2p/12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
 { url: '', lineNumber: 7, columnNumber: 12 } [peer.protocolss.length] 0
+{
+  url: 'http://localhost:59642/browser.js',
+  lineNumber: 54,
+  columnNumber: 12
+} [peer:connect] 12D3KooWK2RXGcEacMu2mgR3cW4TFCKbEgxXBNeiBSryo6qWALJy
 ^C
 ```
 
