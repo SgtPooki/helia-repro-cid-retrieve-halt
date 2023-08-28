@@ -40,7 +40,8 @@ export const createHeliaFromUrl = async url => {
       services: {
         identify: identifyService(),
         autoNAT: autoNATService(),
-        pubsub: gossipsub({allowPublishToZeroPeers: true, emitSelf: false, canRelayMessage: true}),
+        //pubsub: gossipsub({allowPublishToZeroPeers: true, emitSelf: false, canRelayMessage: true}),
+        pubsub: gossipsub({allowPublishToZeroPeers: true, emitSelf: true, canRelayMessage: true}),
         dht: kadDHT({
           clientMode: true,
           validators: {ipns: ipnsValidator},
@@ -54,7 +55,7 @@ export const createHeliaFromUrl = async url => {
   node.libp2p.addEventListener("peer:connect", ev => {
     console.log("[peer:connect]", ev.detail.toString());
   });
-  // js-ipfs-bitswap/src/network.tx
+  // js-ipfs-bitswap/src/network.ts
   await node.libp2p.register("/ipfs/bitswap/1.2.0", createTopology({
     onConnect: (peerId, conn) => {console.log("[/ipfs/bitswap/1.2.0] onConnect", `${peerId}`);},
     onDisconnect: peerId => {console.log("[/ipfs/bitswap/1.2.0] onDisconnect", `${peerId}`);},

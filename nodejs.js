@@ -74,6 +74,9 @@ export const createNode = async (middle) => {
   node.libp2p.addEventListener("peer:connect", ev => {
     //console.log("[peer:connect]", ev.detail);
   });
+  node.libp2p.addEventListener("peer:discovery", ev => {
+    //console.log("[peer:discovery]", ev.detail);
+  });
   await node.libp2p.register("/ipfs/bitswap/1.2.0", createTopology({
     onConnect: (peerId, conn) => {
       //console.log("[/ipfs/bitswap/1.2.0] onConnect", peerId);
