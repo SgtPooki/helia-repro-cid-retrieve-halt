@@ -32,7 +32,7 @@ export const createMiddle = async () => {
       transports: [
         tcp(),
         webSockets({websocket: {rejectUnauthorized: false}}),
-        circuitRelayTransport({discoverRelays: 1}),
+        circuitRelayTransport({discoverRelays: 5}),
         webRTC(),
         webRTCDirect(),
       ],

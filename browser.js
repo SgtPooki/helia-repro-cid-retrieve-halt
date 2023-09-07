@@ -34,7 +34,7 @@ export const createHeliaFromUrl = async url => {
         webRTC(), webRTCDirect(),
         webTransport(),
         // https://github.com/libp2p/js-libp2p-websockets#libp2p-usage-example
-        circuitRelayTransport({discoverRelays: 1}),
+        circuitRelayTransport({discoverRelays: 5}),
       ],
       peerDiscovery: [bootstrap(bootstrapConfig), pubsubPeerDiscovery()],
       services: {
