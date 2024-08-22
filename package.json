@@ -14,5 +14,8 @@
     "success": "node case-success.mjs",
     "halt": "node case-halt.mjs",
     "build": "esbuild npm-libs.js --bundle --format=esm --target=chrome115 --define:global=globalThis --define:process.env.NODE_DEBUG=false --outfile=npm-browser.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
